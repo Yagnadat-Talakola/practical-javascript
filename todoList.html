@@ -108,6 +108,11 @@
       var addTodoInput = document.getElementById('addTodoInput');
 
       addTodoButton.addEventListener('click', function () {
+        
+        // if no value exists, then do nothing. 
+        if (addTodoInput.value === '') {
+          return;
+        }
         todoList.addTodo(addTodoInput.value);
         addTodoInput.value = '';
         todoList.displayTodosToScreen();
@@ -126,7 +131,7 @@
           todoList.displayTodosToScreen();
         }
 
-        if (event.target.id.includes('editTodo')) {
+        if (event.target.id.includes('edit')) {
           var newTodoText = prompt('Edit');
           todoList.editTodo(event.target.id.split('-')[1], newTodoText);
           todoList.displayTodosToScreen();
